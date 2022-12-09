@@ -1,7 +1,7 @@
 databases:
   - name: myshop
     databaseName: react_rails_api_project_template_development
-    user:myshop
+    user: myshop
 
 services:
   - type: web
