@@ -1,21 +1,18 @@
 class SessionsController < ApplicationController
     def clerk_login
-        clerk = Clerk.find_by(email: params[:email])
-        if clerk&.authenticate(params[:password])
-            session[:clerk_id] = clerk.id
-            render json: clerk, status: :created
+        user = User.find_by(email: params[:email])
+        if user&.authenticate(params[:password])
+            session[:user_id] = user.id
+            render json: user, status: :created
         else
             render json: {error: "Invalid email or password"}.to_json, status: :unauthorized
-        end
+        end        
     end
-
     def clerk_logout
-        session.delete :clerk_id
+        session.delete :user_id
         head :no_content
     end
-
-
-    #admin login and logout
+  #admin login and logout
     def admin_login
         admin= Admin.find_by(email: params[:email])
         if admin&.authenticate(params[:password])

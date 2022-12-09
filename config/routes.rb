@@ -13,13 +13,17 @@ Rails.application.routes.draw do
   post '/clerk/login', to: 'sessions#clerk_login'
   delete 'clerk/logout', to: 'sessions#clerk_logout'
    post'/stores', to: "stores#create"
-   get '', to:"stores#index"
+   get '/stores', to:"stores#index"
  # admin sign in routes  
+  post"/admins",to: "admins#create"
   get"/stores/:id/items", to: "stores#store_items"
-   #post"/items", to: "items#create"
-  #delete"/items/:id", to: "items#destroy"
+  post"/items", to: "items#create"
+  delete"/items/:id", to: "items#destroy"
   patch '/items/:id',to:"items#update"
-  resources :admins, only: [:create, :index, :show,:update, :destroy]
+
+
+  resources :admins
+ # post'/alog-in',to: 'sessions#admin_login'
   post '/admin/login', to: 'sessions#admin_login'
   delete 'admin/logout', to: 'sessions#admin_logout'
   
