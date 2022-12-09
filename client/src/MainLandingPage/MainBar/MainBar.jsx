@@ -22,7 +22,11 @@ const MainBar = () => {
          
           <Link  className='links' to='/clog-in'>
                 Clerk
+         </Link>  
+         <Link  className='links' to='/register'>
+              Register
          </Link>         
+                 
           
         </ul>
       </nav>
